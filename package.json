@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "concurrently": "^6.0.0"
+  },
+  "name": "myWeb",
+  "version": "1.0.0",
+  "main": "ecosystem.config.js",
+  "scripts": {
+    "dev" : "concurrently \"cd myweb-back && npm run dev\"  \"cd myweb-front && npm start\" ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
