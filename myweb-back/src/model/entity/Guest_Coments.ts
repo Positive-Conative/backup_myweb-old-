@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
 import { Guest_Books } from "./GuestBooks";
 
-@Entity("Guest_Coments")
+@Entity("GuestComents")
 export class Guest_Coments{
     @PrimaryGeneratedColumn()
-    coment_id: number;
+    id: number;
 
     @Column({length:25})
     user_name: string;

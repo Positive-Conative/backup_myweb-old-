@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, ManyToOne, OneToMany} from "typeorm";
 import { Guest_Coments } from "./Guest_Coments";
 
-@Entity("Guest_Books")
+@Entity("GuestBooks")
 export class Guest_Books{
     @PrimaryGeneratedColumn()
-    guest_id: number;
+    id: number;
 
     @Column({length:25})
     user_name: string;

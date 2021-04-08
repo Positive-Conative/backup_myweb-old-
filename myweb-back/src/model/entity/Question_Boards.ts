@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, ManyToOne} from "typeorm";
 import { Users } from "./Users";
 
-@Entity("Question_Boards")
+@Entity("QuestionBoards")
 export class Question_Boards{
     @PrimaryGeneratedColumn()
-    question_id: number;
+    id: number;
 
     @ManyToOne(
         (type)=>Users,

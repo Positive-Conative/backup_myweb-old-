@@ -1,13 +1,39 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Users } from "./Users";
 import { Board_Contents } from "./Board_Contents";
 
-@Entity("Board_Coments")
+@Entity("BoardComents")
 export class Board_Coments{
 
-    @PrimaryGeneratedColumn()
-    coment_id: number;
+    @PrimaryGeneratedColumn({ 
+        comment: 'Comment ID'
+    })
+    id: number;
 
+    @Column({
+        length: 100,
+        comment: '내용'
+    })
+    content: string;
+
+    @Column({
+        length: 100,
+        comment: '좋아연'
+    })
+    like: string;
+
+    @CreateDateColumn({
+        comment: '생성일'
+    })
+    create_time: Date;
+
+    @UpdateDateColumn({
+        comment: '수정일'
+    })
+    update_time: Date;
+
+
+    //  FK AREA
     @ManyToOne(
         (type)=>Users,
         (users)=>users.board_coments,
@@ -21,16 +47,5 @@ export class Board_Coments{
         {nullable: false}
     )
     board_contents: Board_Contents
-
-    @Column({length: 100})
-    content: string;
-
-    @Column()
-    like: string;
-
-    @CreateDateColumn()
-    create_time: Date;
-
-    @UpdateDateColumn()
-    update_time: Date;
 }
+//몇번보드, 어떤놈인지 알야야되니까..
