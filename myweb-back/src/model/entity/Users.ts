@@ -1,5 +1,5 @@
 import { Entity, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany} from "typeorm";
-import { Guest_Books } from "./GuestBooks";
+import { Board_Likes } from "./Board_Likes";
 import { Board_Contents } from "./Board_Contents";
 import { Board_Coments } from "./Board_Coments";
 import { Question_Boards } from "./Question_Boards";
@@ -8,29 +8,46 @@ import { Question_Boards } from "./Question_Boards";
 export class Users{
     @Column({
         primary : true,
-        length: 35
+        length: 35,
+        comment:"이메일"
     })
     email: string;
 
-    @Column({length: 15})
+    @Column({
+        length: 15,
+        comment:"이메일"
+    })
     password: string;
 
-    @Column({length: 25})
+    @Column({
+        length: 25,
+        comment:"이메일"
+    })
     name: string;
 
-    @Column({length: 25})
+    @Column({
+        length: 25,
+        comment:"이메일"
+    })
     nickname: string;
 
     @Column({
         length: 50,
-        nullable: true
+        nullable: true,
+        comment:"이메일"
     })
     address?: string;
 
-    @Column()
+    @Column({
+        type:"tinyint",
+        comment: '성별 (남:1/여:0)'
+    })
     gender: boolean;
 
-    @Column({nullable: true})
+    @Column({
+        nullable: true,
+        comment: '나이'
+    })
     age?: number;
 
     @CreateDateColumn()
@@ -39,6 +56,7 @@ export class Users{
     @UpdateDateColumn()
     update_time: Date;
 
+    //FK AREA
     @OneToMany(
         (type)=>Board_Contents,
         (board_contents)=>board_contents.user
@@ -56,6 +74,13 @@ export class Users{
         (question_boards)=>question_boards.user
     )
     question_boards:Question_Boards[];
+
+    @OneToMany(
+        (type)=>Board_Likes,
+        (board_likes)=>board_likes.user
+    )
+    board_likes:Board_Likes[];
+
     // static findByName(id: number, pw: string) {
     //     return this.createQueryBuilder("User")
     //         .where("User.id = :id", { id })

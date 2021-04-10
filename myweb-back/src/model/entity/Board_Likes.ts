@@ -2,20 +2,14 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, Up
 import { Users } from "./Users";
 import { Board_Contents } from "./Board_Contents";
 
-@Entity("Board_Coments")
-export class Board_Coments{
+@Entity("Board_Likes")
+export class Board_Likes{
 
     @PrimaryGeneratedColumn({ 
-        comment: 'Comment ID'
+        comment: 'Like id'
     })
     id: number;
-
-    @Column({
-        length: 100,
-        comment: '내용'
-    })
-    content: string;
-
+    
     @CreateDateColumn({
         comment: '생성일'
     })
@@ -26,20 +20,18 @@ export class Board_Coments{
     })
     update_time: Date;
 
-
-    //  FK AREA
+    //FK AREA
     @ManyToOne(
         (type)=>Users,
-        (users)=>users.board_coments,
+        (users)=>users.board_likes,
         {nullable: false}
     )
     user: Users
 
     @ManyToOne(
         (type)=>Board_Contents,
-        (board_contents)=>board_contents.board_coments,
+        (board_contents)=>board_contents.board_likes,
         {nullable: false}
     )
     board_contents: Board_Contents
 }
-//몇번보드, 어떤놈인지 알야야되니까..

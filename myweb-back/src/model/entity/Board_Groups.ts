@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, UpdateDateColumn } from "typeorm";
 import { Board_Contents } from "./Board_Contents";
 
-@Entity("BoardGroups")
+@Entity("Board_Groups")
 export class Board_Groups{
 
     @PrimaryGeneratedColumn({ 

@@ -1,5 +1,5 @@
 import {EntityRepository, Repository} from "typeorm";
-import {Guest_Books} from "../entity/GuestBooks";
+import {Guest_Books} from "../entity/Guest_Books";
 
 @EntityRepository(Guest_Books)
 export class guestBooksRepo extends Repository<Guest_Books> {

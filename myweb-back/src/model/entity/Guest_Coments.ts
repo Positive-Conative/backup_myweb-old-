@@ -1,19 +1,24 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
-import { Guest_Books } from "./GuestBooks";
+import { Guest_Books } from "./Guest_Books";
 
-@Entity("GuestComents")
+@Entity("Guest_Coments")
 export class Guest_Coments{
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ 
+        comment: 'Guestbook Comment id'
+    })
     id: number;
 
-    @Column({length:25})
+    @Column({
+        length:25,
+        comment: '작성자명'
+    })
     user_name: string;
 
-    @Column({length:100})
+    @Column({
+        length:100,
+        comment: '내용'
+    })
     content: string;
-
-    @Column()
-    like: number;
 
     @ManyToOne(
         (type)=>Guest_Books,

@@ -2,30 +2,45 @@ import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDate
 import { Users } from "./Users";
 import { Board_Groups } from "./Board_Groups";
 import { Board_Coments } from "./Board_Coments";
+import { Board_Likes } from "./Board_Likes";
 
-@Entity("BoardContents")
+@Entity("Board_Contents")
 export class Board_Contents{
 
     @PrimaryGeneratedColumn()
     id: number;
     
-    @Column({length: 30})
+    @Column({
+        length: 30,
+        comment: '제목'
+    })
     title: string;
 
-    @Column({length: 300})
+    @Column({
+        length: 300,
+        comment: '내용'
+    })
     content: string;
 
-    @Column({length: 128, nullable: true})
+    @Column({
+        length: 128,
+        nullable: true,
+        comment: '파일'
+    })
     file_src: string;
 
-    @Column({length: 128, nullable: true})
+    @Column({
+        length: 128,
+        nullable: true,
+        comment: '이미지'
+    })
     image_src: string;
 
-    @Column({default: 0})
+    @Column({
+        default: 0,
+        comment: '조회수'
+    })
     hit: number;
-
-    @Column({default: 0})
-    like: number;
 
     @CreateDateColumn({
         comment: '생성일'
@@ -56,4 +71,12 @@ export class Board_Contents{
         (board_coments)=>board_coments.board_contents
     )
     board_coments:Board_Coments[];
+
+    @OneToMany(
+        (type)=>Board_Likes,
+        (board_likes)=>board_likes.board_contents
+    )
+    board_likes:Board_Likes[];
+
+
 }

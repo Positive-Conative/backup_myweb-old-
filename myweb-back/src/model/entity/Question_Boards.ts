@@ -1,28 +1,35 @@
 import { Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, ManyToOne} from "typeorm";
 import { Users } from "./Users";
 
-@Entity("QuestionBoards")
+@Entity("Question_Boards")
 export class Question_Boards{
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ 
+        comment: 'Question Board id'
+    })
     id: number;
 
-    @ManyToOne(
-        (type)=>Users,
-        (users)=>users.question_boards,
-        {nullable:false}
-    )
-    user: Users
-
-    @Column({length:30})
+    @Column({
+        length:30,
+        comment: '제목'
+    })
     title: string;
 
-    @Column({length:100})
+    @Column({
+        length:100,
+        comment: '내용'
+    })
     content: string;
 
-    @Column({length:128})
+    @Column({
+        length:128,
+        comment: '이미지'
+    })
     img_src: string;
 
-    @Column({length:150})
+    @Column({
+        length:150,
+        comment: 'Admin 답장'
+    })
     admin_content: string;
 
     @Column()
@@ -31,6 +38,14 @@ export class Question_Boards{
     @CreateDateColumn()
     create_time: Date;
 
-    @UpdateDateColumn()
-    update_time: Date;
+    // @UpdateDateColumn()
+    // update_time: Date;
+    
+    //fk area
+    @ManyToOne(
+        (type)=>Users,
+        (users)=>users.question_boards,
+        {nullable:false}
+    )
+    user: Users
 }
