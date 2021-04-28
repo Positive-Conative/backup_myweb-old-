@@ -22,6 +22,7 @@ import Zoom from '@material-ui/core/Zoom';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 
+import Menubarz from './Menubar';
 //스타일 속성 수정
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,7 +103,7 @@ function ScrollTop(props) {
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     disableHysteresis: true,
-    threshold: 100,
+    threshold: 50,  // 얼마만큼 내려야 나오게끔?
   });
 
   const handleClick = (event) => {
@@ -215,7 +216,7 @@ export default function PrimarySearchAppBar(props) {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+        <Menubarz/>
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Conative's Blog

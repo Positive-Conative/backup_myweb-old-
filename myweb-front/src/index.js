@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import IndexMain from './Components/Index/IndexMain';
 import Navigation from './Components/Include/Navigation';
+import Header from './Components/Include/Header';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <Navigation />
-    
   </React.StrictMode>,
   document.getElementById('root')
 );
