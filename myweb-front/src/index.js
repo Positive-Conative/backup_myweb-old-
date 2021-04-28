@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import IndexMain from './Components/Index/IndexMain';
 import Navigation from './Components/Include/Navigation';
-import Header from './Components/Include/Header';
+import Test from './Components/Include/Test';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

@@ -23,11 +23,9 @@ const useStyles = makeStyles({
 
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
+  let anchor = 'left'
   const [state, setState] = React.useState({
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -68,20 +66,16 @@ export default function SwipeableTemporaryDrawer() {
   );
 
   return (
-    <div>
-      {['left'].map((anchor) => (
-        <React.Fragment key={anchor}>
+    <React.Fragment key={anchor}>
         <MenuIcon onClick={toggleDrawer(anchor, true)}/>
-          <SwipeableDrawer
+            <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
-          >
+            >
             {list(anchor)}
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
-    </div>
+            </SwipeableDrawer>
+    </React.Fragment>
   );
 }
